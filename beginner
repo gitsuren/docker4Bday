@@ -1,0 +1,47 @@
+$ docker container run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+78445dd45222: Pull complete
+Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e
+07e6f927b07d05f6d12a1ac8d7
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to
+be working correctly.
+
+To generate this message, Docker took the following s
+teps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image
+from the Docker Hub.
+ 3. The Docker daemon created a new container from th
+at image which runs the
+    executable that produces the output you are curre
+ntly reading.
+ 4. The Docker daemon streamed that output to the Doc
+ker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubunt
+u container with:
+ $ docker run -it ubuntu bash
+ 
+1.0 Running your first container
+
+ docker image pull alpine
+ docker image ls
+ docker container run alpine ls -l
+ docker container run alpine echo "hello from alpine"
+ 
+ docker container run -it alpine /bin/sh
+ >>Running the run command with the -it flags attaches us to an interactive tty in the container. 
+ 
+ 1.2 Terminology
+In the last section, you saw a lot of Docker-specific jargon which might be confusing to some. So before you go further, let’s clarify some terminology that is used frequently in the Docker ecosystem.
+
+Images - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run docker image inspect alpine. In the demo above, you used the docker image pull command to download the alpine image. When you executed the command docker container run hello-world, it also did a docker image pull behind the scenes to download the hello-world image.
+Containers - Running instances of Docker images — containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using docker run which you did using the alpine image that you downloaded. A list of running containers can be seen using the docker container ls command.
+Docker daemon - The background service running on the host that manages building, running and distributing Docker containers.
+Docker client - The command line tool that allows the user to interact with the Docker daemon.
+Docker Store - Store is, among other things, a registry of Docker images. You can think of the registry as a directory of all available Docker images. You’ll be using this later in this tutorial.
