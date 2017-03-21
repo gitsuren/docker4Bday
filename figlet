@@ -1,0 +1,34 @@
+
+
+Image creation from a container
+Let’s start by running an interactive shell in a ubuntu container.
+
+docker container run -ti ubuntu bash
+As we’ve done in the previous lab, we will install the figlet package in this container.
+
+apt-get update -y
+apt-get install figlet
+We then exit from this container
+
+exit
+Get the ID of this container using the ls command (do not forget the -a option as the non running container are not returned by the ls command).
+
+docker container ls -a
+Run the following command, using the ID retreived, in order to commit the container and create an image out of it.
+
+docker container commit CONTAINER_ID
+Once it has been commited, we can see the newly created image in the list of available images.
+
+docker image ls
+From the previous command, get the ID of the newly created image and tag it so it’s named ourfiglet.
+
+docker image tag IMAGE_ID ourfiglet
+Now we will run a container based on the newly created image named ourfiglet, and specify the command to be ran such as it uses the figlet package.
+
+docker container run ourfiglet figlet surendra
+As figlet is present in our ourfiglet image, the command ran returns the following output.
+
+ ___ _   _ _ __ ___ _ __   __| |_ __ __ _
+/ __| | | | '__/ _ \ '_ \ / _` | '__/ _` |
+\__ \ |_| | | |  __/ | | | (_| | | | (_| |
+|___/\__,_|_|  \___|_| |_|\__,_|_|  \__,_|
